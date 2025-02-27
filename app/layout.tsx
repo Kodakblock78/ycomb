@@ -1,3 +1,11 @@
+import { 
+  NavigationMenu, 
+  NavigationMenuList, 
+  NavigationMenuItem, 
+  NavigationMenuTrigger, 
+  NavigationMenuContent, 
+  NavigationMenuLink 
+} from "@/components/ui/navigation-menu";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -24,10 +32,29 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-grey-300 text-gray-900`}>
+        <nav className="bg-cyan-950 shadow-md p-4">
+          <NavigationMenu>
+            <NavigationMenuList className="flex space-x-4">
+              {["Home", "About", "Companies", "Startup Jobs", "Find a Co-founder", "Library"].map((item) => (
+                <NavigationMenuItem key={item} className="relative group">
+                  <NavigationMenuTrigger className="px-4 py-2 text-sm font-medium transition-colors duration-200 hover:bg-gray-200 rounded-lg">
+                    {item}
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent className="absolute left-0 mt-2 w-48 bg-white border border-gray-300 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                    <NavigationMenuLink 
+                      href={`/${item.toLowerCase().replace(/ /g, "-")}`} 
+                      className="block px-4 py-2 text-gray-800 hover:bg-gray-100 rounded-lg"
+                    >
+                      {item}
+                    </NavigationMenuLink>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+              ))}
+            </NavigationMenuList>
+          </NavigationMenu>
+        </nav>
+        <main className="p-6">{children}</main>
       </body>
     </html>
   );
