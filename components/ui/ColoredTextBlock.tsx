@@ -5,13 +5,11 @@ const FullScreenSection = () => {
     <section
       className="w-screen h-[500px] flex justify-center items-start text-center p-10"
       style={{
-        background: 'linear-gradient(to bottom,rgba(47, 13, 99, 0.73) 5%, #27272a 20%)', // Custom gradient
+        background: 'linear-gradient(to bottom, #2f0d63 0%, #000 50%, #2f0d63 100%)', // Purple → Black → Purple
       }}
     >
       <div>
-        <h1 className="text-4xl font-bold mb-4 text-white">
-          Our top partners
-        </h1>
+        <h1 className="text-4xl font-bold mb-4 text-white">Our top partners</h1>
         <p className="text-lg text-gray-300">
           a grid of company logos which describe when hovered over
         </p>

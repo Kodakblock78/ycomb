@@ -6,6 +6,7 @@ import HeroSection from "../components/ui/Hero";
 import ColoredTextBlock from "../components/ui/ColoredTextBlock";
 import Help_block from "../components/ui/Block-help"
 import Operate101 from "../components/ui/Operate101"
+import Blogsection from "@/components/ui/blogs";
 
 const page = () => {
   return (
@@ -14,6 +15,7 @@ const page = () => {
     <ColoredTextBlock/>
     <Help_block/>
     <Operate101/>
+    <Blogsection/>
     </>
   );
 }

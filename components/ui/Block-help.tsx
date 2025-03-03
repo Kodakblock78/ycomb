@@ -5,7 +5,7 @@ const Help_block = () => {
     <section
       className="w-screen h-[450px] flex justify-center items-start text-center p-10"
       style={{
-        backgroundColor: 'rgba(47, 13, 99, 0.73)', // Solid background color
+        backgroundColor: 'rgb(48, 8, 108)', // Solid background color
       }}
     >
       <div className="w-full max-w-6xl">
@@ -21,7 +21,7 @@ const Help_block = () => {
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
           </div>
 
-          {/* Block 2 */}
+          {/* Block 2 */} 
           <div className="bg-white/10 p-6 rounded-lg text-gray-300 border-l-4 border-purple-500">
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
           </div>
