@@ -18,22 +18,31 @@ const Help_block = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {/* Block 1 */}
           <div className="bg-white/10 p-6 rounded-lg text-gray-300 border-l-4 border-purple-500">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p>connecting entrepreneurs with mentors to guide them through challenges and growth.
+</p>
           </div>
 
           {/* Block 2 */} 
           <div className="bg-white/10 p-6 rounded-lg text-gray-300 border-l-4 border-purple-500">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p>We help entrepreneurs refine their product and find the right market fit, ensuring they build something people truly want and are ready to pay for.</p>
           </div>
 
           {/* Block 3 */}
           <div className="bg-white/10 p-6 rounded-lg text-gray-300 border-l-4 border-purple-500">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p>We support entrepreneurs by connecting them with a strong network of investors, partners, and alumni, helping them open doors to new opportunities and accelerate their growth.</p>
           </div>
 
           {/* Block 4 */}
           <div className="bg-white/10 p-6 rounded-lg text-gray-300 border-l-4 border-purple-500">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p>We assist entrepreneurs by providing access to seed funding, giving them the capital needed to build their product, grow their team, and scale their business.
+
+
+
+
+
+
+
+</p>
           </div>
         </div>
       </div>

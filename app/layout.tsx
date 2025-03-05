@@ -1,4 +1,4 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google"; 
 import Link from "next/link";
 import "./globals.css";
 
@@ -23,13 +23,20 @@ const Navbar = () => {
           <span>Logo</span>
         </div>
         <ul className="flex space-x-6">
-          {navItems.map((item, index) => (
-            <li key={index}>
-              <Link href={`/${item.toLowerCase().replace(/\s+/g, '-')}`}>
-                <span className="text-white text-lg hover:text-cyan-950">{item}</span>
-              </Link>
-            </li>
-          ))}
+          {navItems.map((item, index) => {
+            // If the item is "Home", set the link to "/"
+            const linkHref = item === "Home" ? "/" : `/${item.toLowerCase().replace(/\s+/g, '-')}`;
+            return (
+              <li key={index}>
+                <Link href={linkHref}>
+                  <span className="text-white text-lg relative group">
+                    {item}
+                    <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-indigo-500 transition-all duration-300 group-hover:w-full"></span>
+                  </span>
+                </Link>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </nav>
@@ -41,7 +48,7 @@ import React from 'react';
 const FooterComp = () => {
   return (
     <footer
-      className="w-full h-scree flex flex-col justify-center items-center p-4"
+      className="w-full h-screen flex flex-col justify-center items-center p-2"
       style={{
         background: 'linear-gradient(to bottom,rgb(39, 39, 42) 0%,rgb(43, 7, 98) 100%)', // Zinc → Purple gradient
       }}
@@ -84,7 +91,6 @@ const FooterComp = () => {
   );
 };
 
-
 export default function RootLayout({
   children,
 }: {
@@ -96,7 +102,7 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <Navbar />
         <main>{children}</main>
-        <FooterComp /> {/* Footer is now within the same file */}
+        <FooterComp />
       </body>
     </html>
   );
