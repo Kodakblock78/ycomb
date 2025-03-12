@@ -1,5 +1,5 @@
 import React from "react";
-import { Inter, Roboto_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 
 // Font imports
 const inter = Inter({
@@ -43,10 +43,14 @@ const AboutPage = () => {
           </p>
         </div>
 
-        {/* Right Side - Image Placeholder */}
+        {/* Right Side - Image */}
         <div className="md:w-1/2 flex justify-center mt-8 md:mt-0">
-          <div className="w-64 h-64 bg-stone-700 rounded-lg flex items-center justify-center">
-            <span className="text-gray-300">Creator's Image Here</span>
+          <div className="w-64 h-64 bg-stone-700 rounded-lg flex items-center justify-center overflow-hidden">
+            <img 
+              src="/path-to-your-image.jpg" 
+              alt="About Us Image" 
+              className="w-full h-full object-cover rounded-lg" 
+            />
           </div>
         </div>
       </main>
