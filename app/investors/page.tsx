@@ -1,9 +1,9 @@
 import React from 'react'
-import  Construction  from '../../components/ui/Construction'
+import  Product  from '../../components/ui/Product-filter'
 
 const page = () => {
   return (
-    <Construction></Construction>
+    <Product></Product>
   )
 }
 
