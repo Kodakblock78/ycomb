@@ -43,6 +43,8 @@ const Navbar = () => {
   );
 };
 
+
+
 import React from 'react';
 
 const FooterComp = () => {

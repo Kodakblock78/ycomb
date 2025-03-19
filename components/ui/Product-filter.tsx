@@ -1,174 +1,121 @@
-"use client"
-import React, { useState } from 'react';
+"use client";
+import React, { useState } from "react";
+import { Button } from "@/components/ui/button2";
+import { Input } from "@/components/ui/input";
+import { Checkbox } from "@/components/ui/Checkbox";
+import { X, Filter } from "lucide-react";
 
-const SearchSection = () => {
+const companies = [
+  { name: "Company A", category: "Tech" },
+  { name: "Company B", category: "Finance" },
+  { name: "Company C", category: "Health" },
+  { name: "Company D", category: "Tech" },
+  { name: "Company E", category: "Finance" },
+  { name: "Company F", category: "Health" },
+  { name: "Company A", category: "Tech" },
+  { name: "Company B", category: "Finance" },
+  { name: "Company C", category: "Health" },
+  { name: "Company D", category: "Tech" },
+  { name: "Company E", category: "Finance" },
+  { name: "Company F", category: "Health" },
+];
+
+const categories = ["Tech", "Finance", "Health"];
+
+const CompaniesPage = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [search, setSearch] = useState("");
+  const [selectedCategories, setSelectedCategories] = useState([]);
 
-  const handleFilterButtonClick = () => {
-    setSidebarOpen(true);
-    document.body.classList.add('overflow-hidden', 'vh-100');
+  const toggleCategory = (category) => {
+    setSelectedCategories((prev) =>
+      prev.includes(category)
+        ? prev.filter((c) => c !== category)
+        : [...prev, category]
+    );
   };
 
-  const handleCloseSidebar = () => {
-    setSidebarOpen(false);
-    document.body.classList.remove('overflow-hidden', 'vh-100');
-  };
+  const filteredCompanies = companies.filter(
+    (company) =>
+      company.name.toLowerCase().includes(search.toLowerCase()) &&
+      (selectedCategories.length === 0 || selectedCategories.includes(company.category))
+  );
 
   return (
-    <>
-      <div className="overlay" style={{ display: sidebarOpen ? 'block' : 'none' }}></div>
-      <div className="search-section">
-        <div className="container-fluid container-xl">
-          <div className="row main-content ml-md-0">
-            <div className={`sidebar col-md-3 px-0 ${sidebarOpen ? 'open' : ''}`}>
-              <h1 className="border-bottom filter-header d-flex d-md-none p-3 mb-0 align-items-center">
-                <span className="mr-2 filter-close-btn" onClick={handleCloseSidebar}>
-                  X
-                </span>
-                Filters
-                <span className="ml-auto text-uppercase">Reset Filters</span>
-              </h1>
-              <div className="sidebar__inner">
-                <div className="filter-body">
-                  <div>
-                    <h2 className="border-bottom filter-title">Seating Options</h2>
-                    <div className="mb-30 filter-options">
-                      <div className="custom-control custom-checkbox mb-3">
-                        <input type="checkbox" className="custom-control-input" id="Indoor" defaultChecked />
-                        <label className="custom-control-label" htmlFor="Indoor">Indoor</label>
-                      </div>
-                      <div className="custom-control custom-checkbox mb-3">
-                        <input type="checkbox" className="custom-control-input" id="Outdoor" />
-                        <label className="custom-control-label" htmlFor="Outdoor">Outdoor</label>
-                      </div>
-                    </div>
-                    <h2 className="font-xbold body-font border-bottom filter-title">Cuisines</h2>
-                    <div className="mb-3 filter-options" id="cusine-options">
-                      <div className="custom-control custom-checkbox mb-3">
-                        <input type="checkbox" className="custom-control-input" id="Chinese" defaultChecked />
-                        <label className="custom-control-label" htmlFor="Chinese">Chinese</label>
-                      </div>
-                      <div className="custom-control custom-checkbox mb-3">
-                        <input type="checkbox" className="custom-control-input" id="Italian" />
-                        <label className="custom-control-label" htmlFor="Italian">Italian</label>
-                      </div>
-                      <div className="custom-control custom-checkbox mb-3">
-                        <input type="checkbox" className="custom-control-input" id="Mexican" />
-                        <label className="custom-control-label" htmlFor="Mexican">Mexican</label>
-                      </div>
-                      <div className="custom-control custom-checkbox mb-3">
-                        <input type="checkbox" className="custom-control-input" id="Thai" />
-                        <label className="custom-control-label" htmlFor="Thai">Thai</label>
-                      </div>
-                      <div className="custom-control custom-checkbox mb-3">
-                        <input type="checkbox" className="custom-control-input" id="Gujarati" />
-                        <label className="custom-control-label" htmlFor="Gujarati">Gujarati</label>
-                      </div>
-                      <div className="custom-control custom-checkbox mb-3">
-                        <input type="checkbox" className="custom-control-input" id="Panjabi" />
-                        <label className="custom-control-label" htmlFor="Panjabi">Panjabi</label>
-                      </div>
-                      <div className="custom-control custom-checkbox mb-3">
-                        <input type="checkbox" className="custom-control-input" id="South-Indian" />
-                        <label className="custom-control-label" htmlFor="South-Indian">South Indian</label>
-                      </div>
-                    </div>
+    <div
+      className="flex min-h-screen relative" // Add relative to the parent to allow z-index control
+      style={{
+        background: 'linear-gradient(to bottom, rgb(43, 7, 98) 0%, rgb(39, 39, 42) 100%)', // Gradient from white to black
+        zIndex: 5, // Main content should also appear above the background gradient
+      }}
+    >
+      {/* Sidebar */}
+      <div
+  className={`fixed top-20 left-0 h-full w-64 bg-gray-900 text-white p-5 mt-[20px] transition-transform duration-300 ease-in-out ${
+    sidebarOpen ? "translate-x-0" : "-translate-x-full"
+  } md:relative md:translate-x-0 md:ml-[84px]`} // Increased left margin for the sidebar
+  style={{
+    zIndex: 10, // Sidebar should be on top of the background
+    borderRadius: '10px', // Apply border radius
+    border: '1px solid white', // Apply a thin 1px white border
+  }}
+>
 
-                    <h2 className="font-xbold body-font border-bottom filter-title">Price Range</h2>
-                    <div className="mb-3 theme-clr xs2-font d-flex justify-content-between">
-                      <span id="slider-range-value1">$100</span>
-                      <span id="slider-range-value2">$10,000</span>
-                    </div>
-                    <div className="mb-30 filter-options">
-                      <div>
-                        <div id="slider-range">
-                          <form>
-                            <div className="form-group">
-                              <input type="range" className="form-control-range" />
-                            </div>
-                          </form>
-                        </div>
-                      </div>
-                    </div>
-                    <h2 className="border-bottom filter-title">Services</h2>
-                    <div className="mb-3 filter-options" id="services-options">
-                      <div className="custom-control custom-checkbox mb-3">
-                        <input type="checkbox" className="custom-control-input" id="Breakfast" defaultChecked />
-                        <label className="custom-control-label" htmlFor="Breakfast">Breakfast</label>
-                      </div>
-                      <div className="custom-control custom-checkbox mb-3">
-                        <input type="checkbox" className="custom-control-input" id="Lunch" />
-                        <label className="custom-control-label" htmlFor="Lunch">Lunch</label>
-                      </div>
-                      <div className="custom-control custom-checkbox mb-3">
-                        <input type="checkbox" className="custom-control-input" id="Donner" />
-                        <label className="custom-control-label" htmlFor="Donner">Donner</label>
-                      </div>
-                      <div className="custom-control custom-checkbox mb-3">
-                        <input type="checkbox" className="custom-control-input" id="Cafe" />
-                        <label className="custom-control-label" htmlFor="Cafe">Cafe</label>
-                      </div>
-                      <div className="custom-control custom-checkbox mb-3">
-                        <input type="checkbox" className="custom-control-input" id="Brunch" />
-                        <label className="custom-control-label" htmlFor="Brunch">Brunch</label>
-                      </div>
-                      <div className="custom-control custom-checkbox mb-3">
-                        <input type="checkbox" className="custom-control-input" id="other" />
-                        <label className="custom-control-label" htmlFor="other">Other</label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="content col-md-9">
-              <div className="d-flex justify-content-between border-bottom align-items-center">
-                <h2 className="title">Products</h2>
-                <div className="filters-actions">
-                  <div>
-                    <button className="btn filter-btn d-md-none">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="mr-2" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
-                        <path d="M0 0h24v24H0V0z" fill="none" />
-                        <path d="M3 18h6v-2H3v2zM3 6v2h18V6H3zm0 7h12v-2H3v2z" />
-                      </svg>
-                      Filter
-                    </button>
-                  </div>
-                  <div className="d-flex align-items-center">
-                    <div className="dropdown position-relative sort-drop">
-                      <button type="button" className="btn btn-transparent dropdown-toggle body-clr p-0 py-1 sm-font fw-400 sort-toggle" data-toggle="dropdown">
-                        <span className="mr-2 d-md-none">
-                          <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
-                            <g>
-                              <path d="M0,0h24 M24,24H0" fill="none" />
-                              <path d="M7,6h10l-5.01,6.3L7,6z M4.25,5.61C6.27,8.2,10,13,10,13v6c0,0.55,0.45,1,1,1h2c0.55,0,1-0.45,1-1v-6 c0,0,3.72-4.8,5.74-7.39C20.25,4.95,19.78,4,18.95,4H5.04C4.21,4,3.74,4.95,4.25,5.61z" />
-                            </g>
-                          </svg>
-                        </span>
-                        <span className="d-md-inline-block ml-md-2 font-semibold">Newest First</span>
-                      </button>
-                      <div className="dropdown-menu dropdown-menu-right p-0 no-caret">
-                        <a className="dropdown-item selected" href="javascript:void(0)">Newest First</a>
-                        <a className="dropdown-item" href="javascript:void(0)">Lowest First</a>
-                        <a className="dropdown-item" href="javascript:void(0)">Highest First</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="row row-grid">
-                {[...Array(9)].map((_, index) => (
-                  <div className="col-md-6 col-lg-4 col-xl-4" key={index}>
-                    <img src="https://dummyimage.com/300X400/000/fff" alt="product" />
-                  </div>
-                ))}
-              </div>
-            </div>
+        <div className="flex justify-between items-center pb-4 border-b">
+          <h2 className="text-xl font-bold">Filters</h2>
+          <X className="cursor-pointer md:hidden" onClick={() => setSidebarOpen(false)} />
+        </div>
+
+        <div className="mt-5">
+          <h3 className="text-lg font-semibold">Categories</h3>
+          <div className="mt-2 space-y-2">
+            {categories.map((category) => (
+              <label key={category} className="flex items-center">
+                <Checkbox
+                  checked={selectedCategories.includes(category)}
+                  onChange={() => toggleCategory(category)}
+                  className="mr-2"
+                />
+                {category}
+              </label>
+            ))}
           </div>
         </div>
       </div>
-    </>
+
+      {/* Main Content */}
+      <div
+        className="w-full p-5 mt-[57px] min-h-screen"
+        style={{
+          zIndex: 5, // Main content should also appear above the background gradient
+        }}
+      >
+        <div className="flex justify-between items-center mb-5">
+          <Input
+            placeholder="Search companies..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="w-full max-w-md"
+          />
+          <Button className="md:hidden" onClick={() => setSidebarOpen(true)}>
+            <Filter className="mr-2" /> Filters
+          </Button>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {filteredCompanies.map((company, index) => (
+            <div key={index} className="bg-white p-4 rounded-lg shadow">
+              <h3 className="text-lg font-bold">{company.name}</h3>
+              <p className="text-gray-600">{company.category}</p>
+            </div>
+          ))}
+          {filteredCompanies.length === 0 && (
+            <p className="col-span-full text-center text-gray-500">No companies found.</p>
+          )}
+        </div>
+      </div>
+    </div>
   );
 };
 
-export default SearchSection;
+export default CompaniesPage;
