@@ -97,6 +97,15 @@ const CompaniesPage = () => {
             onChange={(e) => setSearch(e.target.value)}
             className="w-full max-w-md"
           />
+
+          <div className="flex justify-end items-center p-6">
+            <p className="text-white text-xl mr-4">sort by</p>
+            <select className="border-2 border-indigo-900 rounded-lg p-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <option value="Default">Default</option>
+              <option value="Launch date">Launch date</option>
+            </select>
+          </div>
+
           <Button className="md:hidden" onClick={() => setSidebarOpen(true)}>
             <Filter className="mr-2" /> Filters
           </Button>

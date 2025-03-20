@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 const Navbar = () => {
-  const navItems = ["Home", "Partners", "Investors","Startup Jobs","About","contact"];
+  const navItems = ["Home", "Founders", "Investors","Startup Jobs","About","contact"];
 
   return (
     <nav className="fixed inset-x-0 top-0 p-4 bg-white bg-opacity-10 backdrop-blur-lg z-50">
