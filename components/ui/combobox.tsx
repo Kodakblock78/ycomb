@@ -21,12 +21,12 @@ import {
 
 const frameworks = [
   {
-    value: "market cap",
-    label: "market cap",
+    value: "publicly traded",
+    label: "publicly traded",
   },
   {
-    value: "stock price",
-    label: "stock price",
+    value: "Private companies",
+    label: "Private companies",
   },
 
 ]

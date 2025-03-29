@@ -11,6 +11,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { ComboboxDemo } from "@/components/ui/combobox";
+import PostGrid from "./grid-hotPicks"; 
 
 const ClickableButtons = () => {
   const [clicked, setClicked] = useState<{ [key: number]: boolean }>({});
@@ -40,7 +41,7 @@ const PicksPage = () => {
   const [date, setDate] = useState<Date | undefined>();
 
   return (
-    <div>
+    <div className="bg-grey-200 min-h-screen">
       <div className="flex flex-col items-center space-y-8 mt-[10vh]">
         <div className="text-7xl font-bold text-center">Explore our hot picks</div>
         <ClickableButtons />
@@ -63,12 +64,7 @@ const PicksPage = () => {
             </Button>
           </PopoverTrigger>
           <PopoverContent className="w-auto p-0" align="end">
-            <Calendar
-              mode="single"
-              selected={date}
-              onSelect={setDate}
-              initialFocus
-            />
+            <Calendar mode="single" selected={date} onSelect={setDate} initialFocus />
           </PopoverContent>
         </Popover>
 
@@ -77,8 +73,10 @@ const PicksPage = () => {
           <ComboboxDemo />
         </div>
       </div>
+
+      {/* ✅ Correct PostGrid Component Usage */}
+      <PostGrid />
     </div>
   );
 };
-
 export default PicksPage;
