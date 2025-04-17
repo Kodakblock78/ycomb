@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button2";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/Checkbox";
 import { X, Filter } from "lucide-react";
+import { neon } from "@neondatabase/serverless"
 
 const companies = [
   { name: "Company A", category: "Tech" },
@@ -40,6 +41,8 @@ const CompaniesPage = () => {
       company.name.toLowerCase().includes(search.toLowerCase()) &&
       (selectedCategories.length === 0 || selectedCategories.includes(company.category))
   );
+
+  
 
   return (
     <div
